@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>Piano</title>
+  </head>
+  <body>
+    <div class="header">
+      <div class="selectScale">
+        <button class="selectScaleButton"></button>
+        <div class="select-Dropdown">
+          <div class="row">
+            <button class="startNoteButton">A</button>
+            <button class="startNoteButton">Bb</button>
+            <button class="startNoteButton">B</button>
+            <button class="startNoteButton">C</button>
+            <button class="startNoteButton">Db</button>
+            <button class="startNoteButton">D</button>
+            <button class="startNoteButton">Eb</button>
+            <button class="startNoteButton">E</button>
+            <button class="startNoteButton">F</button>
+            <button class="startNoteButton">Gb</button>
+            <button class="startNoteButton">G</button>
+            <button class="startNoteButton">Ab</button>
+          </div>
+          <div class="row">
+            <button class="scaleButton">Major</button>
+            <button class="scaleButton">Minor</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="findScale">
+        <button class="findScaleButton"></button>
+        <div class="find-Dropdown">
+          <div class="row">
+            <button class="findNoteButton">A</button>
+            <button class="findNoteButton">Bb</button>
+            <button class="findNoteButton">B</button>
+            <button class="findNoteButton">C</button>
+            <button class="findNoteButton">Db</button>
+            <button class="findNoteButton">D</button>
+            <button class="findNoteButton">Eb</button>
+            <button class="findNoteButton">E</button>
+            <button class="findNoteButton">F</button>
+            <button class="findNoteButton">Gb</button>
+            <button class="findNoteButton">G</button>
+            <button class="findNoteButton">Ab</button>
+          </div>
+          <div class="row">
+            <button class="findScaleRunButton">
+              Find Scales (Choose At Least 3 Notes)
+            </button>
+          </div>
+          <div class="row">
+            <div class="foundScales"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="piano" id="piano"></div>
+    <script>
+      const keys = [
+        "C",
+        "Db",
+        "D",
+        "Eb",
+        "E",
+        "F",
+        "Gb",
+        "G",
+        "Ab",
+        "A",
+        "Bb",
+        "B",
+      ];
+      const numOctaves = 7;
+
+      const piano = document.getElementById("piano");
+
+      for (let i = 0; i < numOctaves; i++) {
+        let octaveKeys = keys;
+        if (i === 0) {
+          // Only include A, Bb, and B in octave 0
+          octaveKeys = ["A", "Bb", "B"];
+        }
+        octaveKeys.forEach((key) => {
+          const div = document.createElement("div");
+          const audio = document.createElement("audio");
+          div.setAttribute("data-note", key + i);
+          div.classList.add("key");
+          if (key.length === 1) {
+            div.classList.add("white");
+          } else {
+            div.classList.add("black");
+          }
+          audio.id = key + i;
+          audio.src = `notes/${key}${i}.mp3`;
+          piano.appendChild(audio);
+          piano.appendChild(div);
+        });
+      }
+      piano.insertAdjacentHTML(
+        "beforeend",
+        `<audio id="C8" src="notes/C8.mp3"></audio>
+   <div class="key white" data-note="C8"></div>`
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,198 @@
+*::before, *::after {
+    box-sizing: border-box;
+}
+
+.header{
+    display: flex;
+    align-items: baseline;
+    padding: 100px;
+    gap: 100px;
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+}
+
+.selectScaleButton {
+    display: block;
+    left: 100px;
+    position: relative;
+    height: 250px;
+    width: 1200px;
+    margin: 5px;
+    background-color: rgb(124, 194, 252); 
+    border: 15px solid black;
+}
+
+.selectScaleButton::before{
+    content: "Select Scale";
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.select-Dropdown{
+    display: none;
+    position: relative;
+    min-width: 400px;
+    top: 100%; 
+    left: 100px;
+    justify-content: center;
+    flex-direction: column;
+}
+.select-Dropdown.show {
+    display: flex;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+.startNoteButton{
+    font-size: 50px;
+    display: inline-block;
+    width: 8%;
+    height: 100px;
+    text-align: center;
+}
+.scaleButton{
+    font-size: 50px;
+    display: inline-block;
+    width: 49%;
+    height: 100px;
+    text-align: center;
+}
+
+.findScaleButton {
+    display: block;
+    left: 100px;
+    position: relative;
+    height: 250px;
+    width: 1200px;
+    margin: 5px;
+    background-color: rgb(204, 112, 112);
+    border: 15px solid black;
+}
+.findScaleButton::before{
+    content: "Find Scale";
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.find-Dropdown{
+    display: none;
+    position: relative;
+    min-width: 400px;
+    top: 100%; 
+    left: 100px;
+    justify-content: center;
+    flex-direction: column;
+}
+.find-Dropdown.show {
+    display: flex;
+    max-width: 1200px;
+}
+
+.findNoteButton{
+    font-size: 50px;
+    display: inline-block;
+    width: 8%;
+    height: 100px;
+    text-align: center;
+}
+
+.findScaleRunButton{
+    font-size: 50px;
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+
+.foundScales {
+    font-size: 50px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+
+.foundScales div {
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    margin: 5px;
+    overflow-x: auto;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color:  rgb(204, 112, 112);
+    flex: 0 0 auto;
+    max-width: calc(100% - 100px);
+}
+
+body {
+    background-color: rgb(249, 231, 207);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.piano {
+    display: flex;
+}
+
+.key {
+    height: calc(var(--width) *4);
+    width:  var(--width);
+    
+}
+
+.white {
+    --width: 100px;
+    background-color: white;
+    border: 1px solid black;
+}
+.white.active {
+    filter: brightness(0.8);
+}
+
+.black {
+    --width: 60px;
+    background-color: rgb(14, 14, 14);
+    margin-left: calc(var(--width) / -2);
+    margin-right: calc(var(--width) / -2);
+    z-index: 2;
+    box-shadow: 0 0 0 4px black;
+}
+
+.black.active {
+    filter: brightness(3);
+}
+.black.active.highlighted {
+    filter: brightness(.8);
+}
+
+.highlighted {
+    background-color: rgb(124, 194, 252); 
+}
+
+.findNoteButton.active,
+.startNoteButton.active,
+.scaleButton.active {
+    background-color: darkgrey; 
+}
